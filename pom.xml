@@ -9,13 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.pynguins.archesky</groupId>
-	<artifactId>content</artifactId>
+	<artifactId>archesky-content-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>content</name>
-	<description>Demo project for Spring Boot</description>
+	<name>archesky-content-server</name>
+	<description>Archesky Content Server microservice</description>
 	<properties>
 		<java.version>11</java.version>
 		<testcontainers.version>1.15.2</testcontainers.version>
+		<liquibaseplugin.version>4.3.2</liquibaseplugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -93,6 +94,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.2.0</version>
+				<configuration>
+					<propertyFile>liquibase.properties</propertyFile>
+					<!--suppress UnresolvedMavenProperty -->
+					<outputChangeLogFile>${project.build.resources[0].directory}/db/changelog/dbchangelog.xml</outputChangeLogFile>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

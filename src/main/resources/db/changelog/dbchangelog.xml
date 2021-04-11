@@ -1,0 +1,45 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="r (generated)" id="1618162173080-1">
+        <createTable tableName="content">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="displayName" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="published" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="datetime"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="r (generated)" id="1618162173080-2">
+        <createTable tableName="content_revision">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="content" type="LONGTEXT"/>
+            <column name="summary" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="html" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="CURRENT_TIMESTAMP" name="created" type="datetime"/>
+            <column name="parent" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="r (generated)" id="1618162173080-3">
+        <createIndex indexName="parent_idx" tableName="content_revision">
+            <column name="parent"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="r (generated)" id="1618162173080-4">
+        <addForeignKeyConstraint baseColumnNames="parent" baseTableName="content_revision" constraintName="parent" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="content" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
