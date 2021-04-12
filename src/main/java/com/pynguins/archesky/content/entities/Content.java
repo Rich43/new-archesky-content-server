@@ -24,6 +24,18 @@ public class Content {
     @Column(name = "updated")
     private Date updated;
 
+    @PrePersist
+    void preInsert() {
+        if (this.created == null) {
+            this.created = new Date();
+        }
+    }
+
+    @PreUpdate
+    void preUpdate() {
+        this.updated = new Date();
+    }
+
     public Content(Integer id, String name, String displayName, Boolean published, Date created, Date updated) {
         this.id = id;
         this.name = name;

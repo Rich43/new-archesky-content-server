@@ -42,6 +42,18 @@ public class ContentRevision {
         this.parent = parent;
     }
 
+    @PrePersist
+    void preInsert() {
+        if (this.created == null) {
+            this.created = new Date();
+        }
+    }
+
+    @PreUpdate
+    void preUpdate() {
+        this.updated = new Date();
+    }
+
     public ContentRevision() {
     }
 
