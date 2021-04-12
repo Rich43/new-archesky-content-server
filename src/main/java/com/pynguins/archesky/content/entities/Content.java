@@ -15,7 +15,7 @@ public class Content {
     private Integer id;
     @Column(name = "name", unique = true, nullable = false)
     private String name;
-    @Column(name = "displayName", nullable = false)
+    @Column(name = "display_name", nullable = false)
     private String displayName;
     @Column(name = "published", nullable = false)
     private Boolean published;

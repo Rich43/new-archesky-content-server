@@ -28,7 +28,6 @@ public class ContentRevision {
     @Column(name = "updated")
     private Date updated;
 
-    @Column(name = "parent", nullable = false)
     @ManyToOne
     private Content parent;
 
