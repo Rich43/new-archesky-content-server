@@ -1,30 +1,46 @@
 package com.pynguins.archesky.content.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+import static java.lang.Integer.MAX_VALUE;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
 public class ContentRevision {
     @Id
     @GeneratedValue(strategy = AUTO)
+    @Column(name = "id", nullable = false)
     private Integer id;
+
+    @Column(name = "content", length = MAX_VALUE)
     private String content;
+
+    @Column(name = "summary")
     private String summary;
+
+    @Column(name = "html", nullable = false)
     private Boolean html;
+
+    @Column(name = "created", nullable = false)
     private Date created;
+
+    @Column(name = "updated")
     private Date updated;
 
-    public ContentRevision(Integer id, String content, String summary, Boolean html, Date created, Date updated) {
+    @Column(name = "parent", nullable = false)
+    @ManyToOne
+    private Content parent;
+
+    public ContentRevision(Integer id, String content, String summary, Boolean html, Date created, Date updated, Content parent) {
         this.id = id;
         this.content = content;
         this.summary = summary;
         this.html = html;
         this.created = created;
         this.updated = updated;
+        this.content = content;
+        this.parent = parent;
     }
 
     public ContentRevision() {
@@ -52,5 +68,9 @@ public class ContentRevision {
 
     public Date getUpdated() {
         return updated;
+    }
+
+    public Content getParent() {
+        return parent;
     }
 }

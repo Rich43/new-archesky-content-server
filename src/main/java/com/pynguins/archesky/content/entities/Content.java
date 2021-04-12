@@ -1,22 +1,27 @@
 package com.pynguins.archesky.content.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.util.Date;
 
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
+@Table(name="content")
 public class Content {
     @Id
     @GeneratedValue(strategy = AUTO)
+    @Column(name = "id", nullable = false)
     private Integer id;
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
+    @Column(name = "displayName", nullable = false)
     private String displayName;
+    @Column(name = "published", nullable = false)
     private Boolean published;
+    @Column(name = "created", nullable = false)
     private Date created;
+    @Column(name = "updated")
     private Date updated;
 
     public Content(Integer id, String name, String displayName, Boolean published, Date created, Date updated) {
