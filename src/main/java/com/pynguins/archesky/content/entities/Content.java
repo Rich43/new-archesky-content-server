@@ -4,13 +4,13 @@ import javax.persistence.*;
 
 import java.util.Date;
 
-import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name="content")
 public class Content {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Column(name = "name", unique = true, nullable = false)

@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 import static java.lang.Integer.MAX_VALUE;
-import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class ContentRevision {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 

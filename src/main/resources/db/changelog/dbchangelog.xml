@@ -63,6 +63,6 @@
         <addForeignKeyConstraint baseColumnNames="parent" baseTableName="content_revision" constraintName="parent" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="content" validate="true"/>
     </changeSet>
     <changeSet author="r (generated)" id="1618162173080-5">
-        <renameColumn tableName="content" oldColumnName="displayName" newColumnName="display_name" />
+        <renameColumn tableName="content" oldColumnName="displayName" newColumnName="display_name" columnDataType="VARCHAR(255)" />
     </changeSet>
 </databaseChangeLog>
