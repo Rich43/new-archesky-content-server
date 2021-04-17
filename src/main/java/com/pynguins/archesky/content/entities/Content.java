@@ -3,6 +3,7 @@ package com.pynguins.archesky.content.entities;
 import javax.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -23,6 +24,8 @@ public class Content {
     private Date created;
     @Column(name = "updated")
     private Date updated;
+    @OneToMany
+    private List<ContentRevision> contentRevisions;
 
     @PrePersist
     void preInsert() {
@@ -36,13 +39,14 @@ public class Content {
         this.updated = new Date();
     }
 
-    public Content(Integer id, String name, String displayName, Boolean published, Date created, Date updated) {
+    public Content(Integer id, String name, String displayName, Boolean published, Date created, Date updated, List<ContentRevision> contentRevisions) {
         this.id = id;
         this.name = name;
         this.displayName = displayName;
         this.published = published;
         this.created = created;
         this.updated = updated;
+        this.contentRevisions = contentRevisions;
     }
 
     public Content() {
@@ -70,5 +74,9 @@ public class Content {
 
     public Date getUpdated() {
         return updated;
+    }
+
+    public List<ContentRevision> getContentRevisions() {
+        return contentRevisions;
     }
 }
