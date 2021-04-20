@@ -24,7 +24,7 @@ public class Content {
     private Date created;
     @Column(name = "updated")
     private Date updated;
-    @OneToMany
+    @OneToMany(mappedBy = "parent")
     private List<ContentRevision> contentRevisions;
 
     @PrePersist

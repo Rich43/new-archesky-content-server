@@ -5,8 +5,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import java.util.Optional;
+
 @RepositoryRestResource(collectionResourceRel = "content", path = "content")
 public interface ContentRepository extends PagingAndSortingRepository<Content, Integer> {
     @RestResource(rel = "by-name")
-    Iterable<Content> findAllByName(String name);
+    Optional<Content> findByName(String name);
 }
