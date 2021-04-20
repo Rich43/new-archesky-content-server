@@ -1,5 +1,6 @@
 package com.pynguins.archesky.content.entities;
 
+import javax.naming.OperationNotSupportedException;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -43,6 +44,11 @@ public class ContentRevision {
         if (this.created == null) {
             this.created = new Date();
         }
+    }
+
+    @PreUpdate
+    void preUpdate() throws OperationNotSupportedException {
+        throw new OperationNotSupportedException();
     }
 
     public ContentRevision() {
