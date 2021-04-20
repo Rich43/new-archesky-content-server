@@ -25,9 +25,6 @@ public class ContentRevision {
     @Column(name = "created", nullable = false)
     private Date created;
 
-    @Column(name = "updated")
-    private Date updated;
-
     @ManyToOne
     private Content parent;
 
@@ -37,7 +34,6 @@ public class ContentRevision {
         this.summary = summary;
         this.html = html;
         this.created = created;
-        this.updated = updated;
         this.content = content;
         this.parent = parent;
     }
@@ -47,11 +43,6 @@ public class ContentRevision {
         if (this.created == null) {
             this.created = new Date();
         }
-    }
-
-    @PreUpdate
-    void preUpdate() {
-        this.updated = new Date();
     }
 
     public ContentRevision() {
@@ -75,10 +66,6 @@ public class ContentRevision {
 
     public Date getCreated() {
         return created;
-    }
-
-    public Date getUpdated() {
-        return updated;
     }
 
     public Content getParent() {
