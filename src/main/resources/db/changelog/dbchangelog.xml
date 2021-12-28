@@ -68,4 +68,10 @@
     <changeSet author="r (generated)" id="1618162173080-6">
         <renameColumn tableName="content_revision" oldColumnName="parent" newColumnName="parent_id" columnDataType="INT" />
     </changeSet>
+    <changeSet author="r"  id="1618162173080-7">
+        <sql dbms="mysql">GRANT SELECT, INSERT, UPDATE, DELETE ON content.content TO 'content'@'%';</sql>
+    </changeSet>
+    <changeSet author="r"  id="1618162173080-8">
+        <sql dbms="mysql">GRANT SELECT, INSERT, DELETE ON content.content_revision TO 'content'@'%';</sql>
+    </changeSet>
 </databaseChangeLog>
