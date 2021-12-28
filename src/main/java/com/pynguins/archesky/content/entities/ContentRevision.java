@@ -26,15 +26,19 @@ public class ContentRevision {
     @Column(name = "created", nullable = false)
     private Date created;
 
+    @Column(name = "createdBy")
+    private String createdBy;
+
     @ManyToOne
     private Content parent;
 
-    public ContentRevision(Integer id, String content, String summary, Boolean html, Date created, Date updated, Content parent) {
+    public ContentRevision(Integer id, String content, String summary, Boolean html, Date created, String createdBy,
+                           Content parent) {
         this.id = id;
-        this.content = content;
         this.summary = summary;
         this.html = html;
         this.created = created;
+        this.createdBy = createdBy;
         this.content = content;
         this.parent = parent;
     }
@@ -72,6 +76,10 @@ public class ContentRevision {
 
     public Date getCreated() {
         return created;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
     }
 
     public Content getParent() {

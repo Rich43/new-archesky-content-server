@@ -1,7 +1,6 @@
 package com.pynguins.archesky.content.entities;
 
 import javax.persistence.*;
-
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +21,13 @@ public class Content {
     private Boolean published;
     @Column(name = "created", nullable = false)
     private Date created;
+    @Column(name = "createdBy")
+    private String createdBy;
     @Column(name = "updated")
     private Date updated;
+    @Column(name = "updatedBy")
+    private String updatedBy;
+
     @OneToMany(mappedBy = "parent")
     private List<ContentRevision> contentRevisions;
 
@@ -39,13 +43,16 @@ public class Content {
         this.updated = new Date();
     }
 
-    public Content(Integer id, String name, String displayName, Boolean published, Date created, Date updated, List<ContentRevision> contentRevisions) {
+    public Content(Integer id, String name, String displayName, Boolean published, Date created, String createdBy,
+                   Date updated, String updatedBy, List<ContentRevision> contentRevisions) {
         this.id = id;
         this.name = name;
         this.displayName = displayName;
         this.published = published;
         this.created = created;
+        this.createdBy = createdBy;
         this.updated = updated;
+        this.updatedBy = updatedBy;
         this.contentRevisions = contentRevisions;
     }
 
@@ -78,5 +85,13 @@ public class Content {
 
     public List<ContentRevision> getContentRevisions() {
         return contentRevisions;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
     }
 }
