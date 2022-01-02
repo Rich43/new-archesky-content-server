@@ -1,6 +1,8 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
-    <changeSet author="r (generated)" id="1618162173080-1">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="r (generated)" id="1">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="content"/>
@@ -25,7 +27,7 @@
             <column name="updated" type="datetime"/>
         </createTable>
     </changeSet>
-    <changeSet author="r (generated)" id="1618162173080-2">
+    <changeSet author="r (generated)" id="2">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="content_revision"/>
@@ -44,7 +46,7 @@
             <column name="parent" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="r (generated)" id="1618162173080-3">
+    <changeSet author="r (generated)" id="3">
         <preConditions onFail="MARK_RAN">
             <not>
                 <indexExists indexName="parent_idx"/>
@@ -54,7 +56,7 @@
             <column name="parent"/>
         </createIndex>
     </changeSet>
-    <changeSet author="r (generated)" id="1618162173080-4">
+    <changeSet author="r (generated)" id="4">
         <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists foreignKeyName="parent"/>
@@ -62,16 +64,35 @@
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="parent" baseTableName="content_revision" constraintName="parent" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="content" validate="true"/>
     </changeSet>
-    <changeSet author="r (generated)" id="1618162173080-5">
+    <changeSet author="r (generated)" id="5">
         <renameColumn tableName="content" oldColumnName="displayName" newColumnName="display_name" columnDataType="VARCHAR(255)" />
     </changeSet>
-    <changeSet author="r (generated)" id="1618162173080-6">
+    <changeSet author="r (generated)" id="6">
         <renameColumn tableName="content_revision" oldColumnName="parent" newColumnName="parent_id" columnDataType="INT" />
     </changeSet>
-    <changeSet author="r"  id="1618162173080-7">
+    <changeSet author="r"  id="7">
         <sql dbms="mysql">GRANT SELECT, INSERT, UPDATE, DELETE ON content.content TO 'content'@'%';</sql>
     </changeSet>
-    <changeSet author="r"  id="1618162173080-8">
+    <changeSet author="r"  id="8">
         <sql dbms="mysql">GRANT SELECT, INSERT, DELETE ON content.content_revision TO 'content'@'%';</sql>
+    </changeSet>
+    <changeSet author="r" id="9">
+        <addColumn tableName="content">
+            <column name="created_by" type="VARCHAR(255)" afterColumn="created">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet author="r" id="10">
+        <addColumn tableName="content">
+            <column name="updated_by" type="VARCHAR(255)" afterColumn="updated" />
+        </addColumn>
+    </changeSet>
+    <changeSet author="r" id="11">
+        <addColumn tableName="content_revision">
+            <column name="created_by" type="VARCHAR(255)" afterColumn="created">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

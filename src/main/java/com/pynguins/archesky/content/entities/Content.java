@@ -21,7 +21,7 @@ public class Content {
     private Boolean published;
     @Column(name = "created", nullable = false)
     private Date created;
-    @Column(name = "createdBy")
+    @Column(name = "createdBy", nullable = false)
     private String createdBy;
     @Column(name = "updated")
     private Date updated;

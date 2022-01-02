@@ -26,7 +26,7 @@ public class ContentRevision {
     @Column(name = "created", nullable = false)
     private Date created;
 
-    @Column(name = "createdBy")
+    @Column(name = "createdBy", nullable = false)
     private String createdBy;
 
     @ManyToOne
