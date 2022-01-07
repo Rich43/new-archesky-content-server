@@ -1,4 +1,4 @@
-package com.pynguins.archesky.content.entities;
+package com.archesky.content.entities;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -1,6 +1,6 @@
-package com.pynguins.archesky.content.repository;
+package com.archesky.content.repository;
 
-import com.pynguins.archesky.content.entities.Content;
+import com.archesky.content.entities.Content;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
