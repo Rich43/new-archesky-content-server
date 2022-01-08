@@ -13,31 +13,31 @@ public interface ContentRepository extends PagingAndSortingRepository<Content, I
     @RestResource(rel = "by-name")
     Optional<Content> findByName(String name);
 
-    @PreAuthorize("hasAuthority('archesky.create_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_create_content')")
     @Override
     <S extends Content> S save(S entity);
 
-    @PreAuthorize("hasAuthority('archesky.create_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_create_content')")
     @Override
     <S extends Content> Iterable<S> saveAll(Iterable<S> entities);
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_delete_content')")
     @Override
     void deleteById(Integer integer);
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_delete_content')")
     @Override
     void delete(Content entity);
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_delete_content')")
     @Override
     void deleteAllById(Iterable<? extends Integer> integers);
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_delete_content')")
     @Override
     void deleteAll(Iterable<? extends Content> entities);
 
-    @PreAuthorize("hasAuthority('archesky.delete_content')")
+    @PreAuthorize("hasAuthority('ROLE_archesky_delete_content')")
     @Override
     void deleteAll();
 }
